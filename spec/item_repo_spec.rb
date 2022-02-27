@@ -32,4 +32,13 @@ RSpec.describe ItemRepository do
     expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
     expect(expected_item.item_attributes[:id]).to eq 263397059
   end
+
+  it "can find an item with first letter entered lower case" do
+    test_name = "etre ailleurs"
+    expected_item = ir.find_by_name(test_name)
+    expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
+  end
+
+  it "find all items "
+
 end
