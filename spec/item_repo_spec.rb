@@ -37,4 +37,10 @@ RSpec.describe ItemRepository do
     expect(expected_item.item_attributes[:name]).to eq "etre ailleurs"
   end
 
+  it "can find all rows having any occurrence of search string
+     in the description field" do
+     expected_item = ir.find_all_with_description("icon")
+     expect(expected_item.length).to eq 8
+  end
+
 end

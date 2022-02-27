@@ -25,4 +25,10 @@ class ItemRepository
     end
   end
 
+  def find_all_with_description(string)
+    items_instances_array.find_all do |item_instance|
+      item_instance.item_attributes[:description].include?(string)
+      end
+  end
+
 end
