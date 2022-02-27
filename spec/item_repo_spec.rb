@@ -1,4 +1,3 @@
-# require "./spec/spec_helper"
 require "./lib/item_repo"
 require "./lib/sales_engine"
 require "./lib/item"
