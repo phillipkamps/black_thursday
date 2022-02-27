@@ -31,4 +31,23 @@ class ItemRepository
       end
   end
 
+### see item_repo_spec.rb note, this returns 0 for integer=1200
+
+  def find_all_by_price(integer)
+#    items_instances_array.find_all do |item_instance|
+#      item_instance.item_attributes[:unit_price].equal?(integer)
+#      end
+  end
+
+###
+
+  def find_all_by_price_in_range()
+  end
+
+  def find_all_by_merchant_id(input_id)
+    items_instances_array.find_all do |item_instance|
+      item_instance.item_attributes[:merchant_id].equal?(input_id)
+      end
+  end
+
 end
