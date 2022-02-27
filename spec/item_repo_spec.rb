@@ -1,4 +1,4 @@
-require "./spec/spec_helper"
+# require "./spec/spec_helper"
 require "./lib/item_repo"
 require "./lib/sales_engine"
 require "./lib/item"
@@ -23,22 +23,19 @@ RSpec.describe ItemRepository do
     test_id = 263397059
     expected_item = ir.find_by_id(test_id)
     expect(expected_item.item_attributes[:id]).to eq 263397059
-    expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
+    expect(expected_item.item_attributes[:name]).to eq "etre ailleurs"
   end
 
   it "can find an item by name" do
-    test_name = "Etre ailleurs"
-    expected_item = ir.find_by_name(test_name)
-    expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
+    expected_item = ir.find_by_name("Etre ailleurs")
+    expect(expected_item.item_attributes[:name]).to eq "etre ailleurs"
     expect(expected_item.item_attributes[:id]).to eq 263397059
   end
 
   it "can find an item with first letter entered lower case" do
     test_name = "etre ailleurs"
     expected_item = ir.find_by_name(test_name)
-    expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
+    expect(expected_item.item_attributes[:name]).to eq "etre ailleurs"
   end
-
-  it "find all items "
 
 end

@@ -4,6 +4,8 @@ class Item
   def initialize(attributes)
     @item_attributes = attributes
     @item_attributes[:id] = item_attributes[:id].to_i
+    @item_attributes[:name] = item_attributes[:name].downcase
+    @item_attributes[:description] = item_attributes[:description].downcase
     @item_attributes[:merchant_id] = item_attributes[:merchant_id].to_i
   end
 
