@@ -19,6 +19,10 @@ RSpec.describe CustomerRepository do
   it "is an instance of CustomerRepository" do
     expect(cr).to be_an_instance_of(CustomerRepository)
   end
+
+  it "returns an array of all merchant instances" do
+    expect(cr.all.count).to eq 1000
+  end
 end
 
 # context "Customer Repository" do

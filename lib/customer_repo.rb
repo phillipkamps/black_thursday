@@ -3,4 +3,8 @@ class CustomerRepository
   def initialize(customers_instances_array)
     @customers_instances_array = customers_instances_array
   end
+
+  def all
+    customers_instances_array
+  end
 end
