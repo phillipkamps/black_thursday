@@ -32,7 +32,7 @@ RSpec.describe CustomerRepository do
 
   it "finds all customers with same first name" do
     expected_customers = cr.find_all_by_first_name("Helga")
-    expect(expected_customers.count.to eq(3)
+    expect(expected_customers.count).to eq(3)
   end
 end
 

@@ -1,8 +1,6 @@
 require "pry"
 class ItemRepository
-  # attributes ...
   attr_reader :items_instances_array
-
   def initialize(items_instances_array)
     @items_instances_array = items_instances_array
   end
