@@ -50,4 +50,29 @@ class ItemRepository
       end
   end
 
+###
+
+  def create(attributes)
+#    attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
+#    items_instances_array << Item.new(attributes)
+  end
+
+###
+
+###
+
+  def update(id, attributes)
+
+  #  if attributes.include?(:name)
+  #    find_by_id(id).item_attributes[:name] = attributes[:name]
+  #  end
+  #  if attributes.include?(:description)
+  #    find_by_id(id).item_attributes[:description] = attributes[:description]
+  #  end
+  #  if attributes.include?(:unit_price)
+  #    find_by_id(id).item_attributes[:unit_price] = attributes[:unit_price]
+  #  end
+
+  end
+
 end
