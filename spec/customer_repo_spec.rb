@@ -50,20 +50,21 @@ RSpec.describe CustomerRepository do
     expected_customer = cr.find_by_id(1001)
     expect(expected_customer.customer_attributes[:first_name]).to eq("cott")
   end
+
+  it "updates existing customer" do
+    cr.create({first_name: "Cott",
+               last_name: "Ullivan",
+               created_at: Time.now,
+               updated_at: Time.now})
+
+    time = cr.find_by_id(1001).customer_attributes[:updated_at]
+    attributes = {first_name: "Scott"}
+    cr.update(1001, attributes)
+    expect(cr.find_by_id(1001).customer_attributes[:first_name]).to eq("Scott")
+    expect(cr.find_by_id(1001).customer_attributes[:updated_at]).to_not eq(time)
+  end
 end
 
-#
-#     it "#create creates a new customer instance" do
-#       attributes = {
-#         :first_name => "Joan",
-#         :last_name => "Clarke",
-#         :created_at => Time.now,
-#         :updated_at => Time.now
-#       }
-#       engine.customers.create(attributes)
-#       expected = engine.customers.find_by_id(1001)
-#       expect(expected.first_name).to eq "Joan"
-#     end
 #
 #     it "#update updates a customer" do
 #       original_time = engine.customers.find_by_id(1001).updated_at

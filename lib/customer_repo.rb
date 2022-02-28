@@ -32,4 +32,11 @@ class CustomerRepository
     attributes[:updated_at] = Time.now
     customers_instances_array << Customer.new(attributes)
   end
+
+  def update(id, attributes)
+    attributes.each do |attribute|
+      find_by_id(id).customer_attributes[attribute[0]] = attribute[1]
+    end
+    find_by_id(id).customer_attributes[:updated_at] = Time.now
+  end
 end
