@@ -7,4 +7,10 @@ class CustomerRepository
   def all
     customers_instances_array
   end
+
+  def find_by_id(id)
+    customers_instances_array.find do |customer_instance|
+      customer_instance.customer_attributes[:id] == id
+    end
+  end
 end
