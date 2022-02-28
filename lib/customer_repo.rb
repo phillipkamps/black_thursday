@@ -19,4 +19,10 @@ class CustomerRepository
       customer_instance.customer_attributes[:first_name] == first_name.downcase
     end
   end
+
+  def find_all_by_last_name(last_name)
+    customers_instances_array.find_all do |customer_instance|
+      customer_instance.customer_attributes[:last_name] == last_name.downcase
+    end
+  end
 end
