@@ -63,37 +63,30 @@ RSpec.describe CustomerRepository do
     expect(cr.find_by_id(1001).customer_attributes[:first_name]).to eq("Scott")
     expect(cr.find_by_id(1001).customer_attributes[:updated_at]).to_not eq(time)
   end
-end
 
-#
-#     it "#update updates a customer" do
-#       original_time = engine.customers.find_by_id(1001).updated_at
-#       attributes = {
-#         last_name: "Smith"
-#       }
-#       engine.customers.update(1001, attributes)
-#       expected = engine.customers.find_by_id(1001)
-#       expect(expected.last_name).to eq "Smith"
-#       expect(expected.first_name).to eq "Joan"
-#       expect(expected.updated_at).to be > original_time
-#     end
-#
-#     it "#update cannot update id or created_at" do
-#       attributes = {
-#         id: 2000,
-#         created_at: Time.now
-#       }
-#       engine.customers.update(1001, attributes)
-#       expected = engine.customers.find_by_id(2000)
-#       expect(expected).to eq nil
-#       expected = engine.customers.find_by_id(1001)
-#       expect(expected.created_at).not_to eq attributes[:created_at]
-#     end
-#
-#     it "#update on unknown customer does nothing" do
-#       engine.customers.update(2000, {})
-#     end
-#
+  xit "cannot update id or created_at" do # may need to finish this for future refactor
+    cr.create({first_name: "Cott",
+               last_name: "Ullivan",
+               created_at: Time.now,
+               updated_at: Time.now})
+
+    time = cr.find_by_id(1001).customer_attributes[:updated_at]
+    attributes = {first_name: "Scott"}
+    cr.update(1001, attributes)
+    expect(cr.find_by_id(1001).customer_attributes[:first_name]).to eq("Scott")
+    expect(cr.find_by_id(1001).customer_attributes[:updated_at]).to_not eq(time)
+  end
+
+  it "deletes customer" do
+    cr.create({first_name: "Cott",
+               last_name: "Ullivan",
+               created_at: Time.now,
+               updated_at: Time.now})
+
+    cr.delete(1001)
+    expect(cr.find_by_id(1001)).to eq(nil)
+  end
+end
 #     it "#delete deletes the specified customer" do
 #       engine.customers.delete(1001)
 #       expected = engine.customers.find_by_id(1001)
