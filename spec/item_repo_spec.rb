@@ -48,8 +48,6 @@ RSpec.describe ItemRepository do
       expect(expected_item.length).to eq 41
      end
 
-  ###
-
   it "can find all items by price in a specified range" do
      expected_item = ir.find_all_by_price_in_range(0..12000)
      expect(expected_item.length). to eq 1367
@@ -61,26 +59,19 @@ RSpec.describe ItemRepository do
       expect(expected_item.length).to eq 2
       end
 
-### NoMthErr: undef method `downcase' for nil:NilClass
-### ./lib/item.rb:8:in `initialize'
-
-   it "creates a new item and id" do
-  ir.create({name: "WidgetXMusk"})
-  expected_item = ir.find_by_name("WidgetXMusk")
-  expect(expected_item.item_attributes[:name]).to eq "widgetxmusk"
-  expected_item = ir.find_by_id(263567475)
-  expect(expected_item.item_attributes[:id]).to eq 263567475
-     end
-###
-
-### NoMthErr: undef method `item_attributes' for nil:NilClass
-### ./lib/item_repo.rb:65:in `update'
+  it "creates a new item and id" do
+    ir.create({name: "WidgetXMusk"})
+    expected_item = ir.find_by_name("WidgetXMusk")
+    expect(expected_item.item_attributes[:name]).to eq "widgetxmusk"
+    expected_item = ir.find_by_id(263567475)
+    expect(expected_item.item_attributes[:id]).to eq 263567475
+    end
 
   it "can update an items updatable features" do
-#    ir.create({name: "CrunchyRocks"})
-#    ir.update(263567475, {name: "CrunchyFrogs"})
-#    exptected_item = ir.find_by_id(263567475)
-#    expect(expected_item.item_attributes[:name]).to eq "CrunchyFrogs"
+    ir.create({name: "CrunchyRocks"})
+    ir.update(263567475, {name: "CrunchyFrogs"})
+    expected_item = ir.find_by_id(263567475)
+    expect(expected_item.item_attributes[:name]).to eq "CrunchyFrogs"
   end
 
 end
