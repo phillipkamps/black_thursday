@@ -1,6 +1,7 @@
 require "./lib/sales_engine"
 require "./lib/customer"
 require "./lib/customer_repo"
+require "Time"
 require "pry"
 
 RSpec.describe CustomerRepository do
@@ -42,11 +43,12 @@ RSpec.describe CustomerRepository do
   end
 
   it "creates a new customer instance" do
-    cr.create({first_name: "Scott"})
-    expected_customer = cr.find_by_first_name("Scott")
-    expect(expected_customer.customer_attributes[:first_name]).to eq("scott")
+    cr.create({first_name: "Cott",
+               last_name: "Ullivan",
+               created_at: Time.now,
+               updated_at: Time.now})
     expected_customer = cr.find_by_id(1001)
-    expect(expected_customer.customer_attributes[:id]).to eq(1001)
+    expect(expected_customer.customer_attributes[:first_name]).to eq("cott")
   end
 end
 

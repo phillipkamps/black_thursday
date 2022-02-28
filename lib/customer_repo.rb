@@ -25,4 +25,11 @@ class CustomerRepository
       customer_instance.customer_attributes[:last_name] == last_name.downcase
     end
   end
+
+  def create(attributes)
+    attributes[:id] = customers_instances_array[-1].customer_attributes[:id] + 1
+    attributes[:created_at] = Time.now
+    attributes[:updated_at] = Time.now
+    customers_instances_array << Customer.new(attributes)
+  end
 end
