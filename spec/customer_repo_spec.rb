@@ -8,6 +8,7 @@ RSpec.describe CustomerRepository do
     SalesEngine.from_csv({
       items: "./data/items.csv",
       merchants: "./data/merchants.csv",
+      invoices: "./data/invoices.csv",
       customers: "./data/customers.csv"
     })
   end
@@ -20,7 +21,7 @@ RSpec.describe CustomerRepository do
     expect(cr).to be_an_instance_of(CustomerRepository)
   end
 
-  it "returns an array of all merchant instances" do
+  it "returns an array of all customer instances" do
     expect(cr.all.count).to eq 1000
   end
 
