@@ -40,30 +40,16 @@ RSpec.describe CustomerRepository do
     expected_customers = cr.find_all_by_last_name("Johns")
     expect(expected_customers.count).to eq(4)
   end
+
+  it "creates a new customer instance" do
+    cr.create({first_name: "Scott"})
+    expected_customer = cr.find_by_first_name("Scott")
+    expect(expected_customer.customer_attributes[:first_name]).to eq("scott")
+    expected_customer = cr.find_by_id(1001)
+    expect(expected_customer.customer_attributes[:id]).to eq(1001)
+  end
 end
 
-#
-#     it "#find_all_by_last_name returns all customers with matching last name" do
-#       fragment = "On"
-#       expected = engine.customers.find_all_by_last_name(fragment)
-#
-#       expect(expected.length).to eq 85
-#       expect(expected.first.class).to eq Customer
-#     end
-#
-#     it "#find_all_by_first_name and #find_all_by_last_name are case insensitive" do
-#       fragment = "NN"
-#       expected = engine.customers.find_all_by_first_name(fragment)
-#
-#       expect(expected.length).to eq 57
-#       expect(expected.first.class).to eq Customer
-#
-#       fragment = "oN"
-#       expected = engine.customers.find_all_by_last_name(fragment)
-#
-#       expect(expected.length).to eq 85
-#       expect(expected.first.class).to eq Customer
-#     end
 #
 #     it "#create creates a new customer instance" do
 #       attributes = {
