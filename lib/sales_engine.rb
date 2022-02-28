@@ -16,7 +16,9 @@ class SalesEngine
   def self.from_csv(argument)
     items = CSV.read(argument[:items], headers: true, header_converters: :symbol)
     merchants = CSV.read(argument[:merchants], headers: true, header_converters: :symbol)
-    SalesEngine.new({items: items, merchants: merchants})
+    customers = CSV.read(argument[:customers], headers: true, header_converters: :symbol)
+
+    SalesEngine.new({items: items, merchants: merchants, customers: customers})
   end
 
   def items
