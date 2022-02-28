@@ -51,6 +51,8 @@ RSpec.describe ItemRepository do
   ###
 
   it "can find all items by price in a specified range" do
+     expected_item = ir.find_all_by_price_in_range(0..12000)
+     expect(expected_item.length). to eq 1367
      end
 
   it "can find all item rows where merchant id matches input

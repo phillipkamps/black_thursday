@@ -37,7 +37,12 @@ class ItemRepository
     end
   end
 
-  def find_all_by_price_in_range()
+  def find_all_by_price_in_range(range)
+    range_items_to_check = []
+    items_instances_array.each do |item_instance|
+        range_items_to_check << (item_instance.item_attributes[:unit_price].to_f <= range.to_a.max && item_instance.item_attributes[:unit_price].to_f >= range.to_a.min)
+    end
+    return range_items_to_check
   end
 
   def find_all_by_merchant_id(input_id)
@@ -45,8 +50,6 @@ class ItemRepository
       item_instance.item_attributes[:merchant_id].equal?(input_id)
       end
   end
-
-###
 
   def create(attributes)
 #    attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
