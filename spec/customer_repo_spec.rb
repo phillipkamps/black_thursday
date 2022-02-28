@@ -23,6 +23,12 @@ RSpec.describe CustomerRepository do
   it "returns an array of all merchant instances" do
     expect(cr.all.count).to eq 1000
   end
+
+  it "finds a customer by id" do
+    expected_customer = cr.find_by_id(301)
+    expect(expected_customer.customer_attributes[:id]).to eq 301
+    expect(expected_customer.customer_attributes[:last_name]).to eq "wolf"
+  end
 end
 
 # context "Customer Repository" do
