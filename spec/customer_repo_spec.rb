@@ -35,30 +35,13 @@ RSpec.describe CustomerRepository do
     expected_customers = cr.find_all_by_first_name("Helga")
     expect(expected_customers.count).to eq(3)
   end
+
+  it "finds all customers with same last name" do
+    expected_customers = cr.find_all_by_last_name("Johns")
+    expect(expected_customers.count).to eq(4)
+  end
 end
 
-# context "Customer Repository" do
-#     it "#all returns all of the customers" do
-#       expected = engine.customers.all
-#       expect(expected.length).to eq 1000
-#       expect(expected.first.class).to eq Customer
-#     end
-#
-#     it "#find_by_id returns the customer with matching id" do
-#       id = 100
-#       expected = engine.customers.find_by_id(id)
-#
-#       expect(expected.id).to eq id
-#       expect(expected.class).to eq Customer
-#     end
-#
-#     it "#find_all_by_first_name returns all customers with matching first name" do
-#       fragment = "oe"
-#       expected = engine.customers.find_all_by_first_name(fragment)
-#
-#       expect(expected.length).to eq 8
-#       expect(expected.first.class).to eq Customer
-#     end
 #
 #     it "#find_all_by_last_name returns all customers with matching last name" do
 #       fragment = "On"
