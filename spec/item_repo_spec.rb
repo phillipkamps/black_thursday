@@ -43,12 +43,9 @@ RSpec.describe ItemRepository do
      expect(expected_item.length).to eq 8
      end
 
-  ### this test fails, stating 0 meet the criteirion "1200" but spreadshee
-  ### calculates 51
-
   it "can find all item rows where unit price matches integer input" do
-  #       expected_item = ir.find_all_by_price(1200)
-  #       expect(expected_item.length).to eq 51
+      expected_item = ir.find_all_by_price(1200)
+      expect(expected_item.length).to eq 41
      end
 
   ###
