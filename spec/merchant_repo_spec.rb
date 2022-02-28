@@ -1,6 +1,6 @@
-require "./lib/merchant_repo"
 require "./lib/sales_engine"
 require "./lib/merchant"
+require "./lib/merchant_repo"
 require "pry"
 
 RSpec.describe MerchantRepository do

@@ -29,6 +29,10 @@ class SalesEngine
     @merchants_data
   end
 
+  def customers
+    @customers_data
+  end
+
   def items_instanciator
     items_instances_array = []
     items.by_row!.each do |row|
