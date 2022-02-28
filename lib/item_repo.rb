@@ -52,8 +52,13 @@ class ItemRepository
   end
 
   def create(attributes)
-#    attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
-#    items_instances_array << Item.new(attributes)
+    attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
+    attributes[:description] = ""
+    attributes[:unit_price] = ""
+    attributes[:created_at] = ""
+    attributes[:updated_at] = ""
+    attributes[:merchant_id] = ""
+    items_instances_array << Item.new(attributes)
   end
 
 ###

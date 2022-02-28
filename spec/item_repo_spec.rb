@@ -65,11 +65,11 @@ RSpec.describe ItemRepository do
 ### ./lib/item.rb:8:in `initialize'
 
    it "creates a new item and id" do
-  #   ir.create({name: "WidgetXMusk"})
-  #   expected_item = ir.find_by_name("WidgetXMusk")
-  #   expect(expected_item.item_attributes[:name]).to eq "WidgetXMusk"
-  #   expected_item = ir.find_by_id(263567475)
-  #   expect(expected_item.item_attributes[:id]).to eq 263567475
+  ir.create({name: "WidgetXMusk"})
+  expected_item = ir.find_by_name("WidgetXMusk")
+  expect(expected_item.item_attributes[:name]).to eq "widgetxmusk"
+  expected_item = ir.find_by_id(263567475)
+  expect(expected_item.item_attributes[:id]).to eq 263567475
      end
 ###
 
