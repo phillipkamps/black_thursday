@@ -4,10 +4,12 @@ require "item"
 require "pry"
 
 class SalesEngine
-  attr_reader :merchants_instances_array
+  attr_reader :merchants_instances_array, :customers_instances_array
   def initialize(data)
     @items_data = data[:items]
     @merchants_data = data[:merchants]
+    @customers_data = data[:customers]
+    @customers_instances_array = []
     @merchants_instances_array = []
   end
 
@@ -35,8 +37,15 @@ class SalesEngine
 
   def merchants_instanciator
     merchants.by_row!.each do |row|
-      @merchants_instances_array << Merchant.new(row)
+      merchants_instances_array << Merchant.new(row)
     end
-    @merchants_instances_array
+    merchants_instances_array
+  end
+
+  def customers_instanciator
+    customers.by_row!.each do |row|
+      customers_instances_array << Customer.new(row)
+    end
+    customers_instances_array
   end
 end
