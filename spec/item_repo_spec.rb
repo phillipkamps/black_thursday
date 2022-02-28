@@ -74,4 +74,10 @@ RSpec.describe ItemRepository do
     expect(expected_item.item_attributes[:name]).to eq "CrunchyFrogs"
   end
 
+  it "can delete an item by id number" do
+    ir.create({name: "CrunchyRocks"})
+    ir.delete(263567475)
+    expect(ir.find_by_id(263567475)).to eq nil
+  end
+
 end
