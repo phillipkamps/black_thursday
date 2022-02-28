@@ -29,6 +29,11 @@ RSpec.describe CustomerRepository do
     expect(expected_customer.customer_attributes[:id]).to eq 301
     expect(expected_customer.customer_attributes[:last_name]).to eq "wolf"
   end
+
+  it "finds all customers with same first name" do
+    expected_customers = cr.find_all_by_first_name("Helga")
+    expect(expected_customers.count.to eq(3)
+  end
 end
 
 # context "Customer Repository" do
