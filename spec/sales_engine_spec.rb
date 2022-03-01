@@ -1,21 +1,20 @@
 require "csv"
-require './lib/sales_engine'
+require "./lib/sales_engine"
 require "./lib/merchant"
 require "./lib/invoice"
-require 'pry'
+require "pry"
 
 RSpec.describe SalesEngine do
-
   se = SalesEngine.from_csv({
-    :items     => "./data/items.csv",
-    :merchants => "./data/merchants.csv",
-    :invoices => "./data/invoices.csv"
+    items: "./data/items.csv",
+    merchants: "./data/merchants.csv",
+    invoices: "./data/invoices.csv",
+    customers: "./data/customers.csv"
   })
 
   it "exists" do
     se.analyst
     expect(se).to be_an_instance_of(SalesEngine)
-
   end
 
   it "returns merchants" do
@@ -27,5 +26,4 @@ RSpec.describe SalesEngine do
     expect(se.items_instanciator[0]).to be_an_instance_of(Item)
     expect(se.merchants_instanciator[0]).to be_an_instance_of(Merchant)
   end
-
 end

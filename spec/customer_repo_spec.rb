@@ -69,8 +69,6 @@ RSpec.describe CustomerRepository do
                last_name: "Ullivan",
                created_at: Time.now,
                updated_at: Time.now})
-
-    time = cr.find_by_id(1001).customer_attributes[:updated_at]
     attributes = {id: 9999, created_at: Time.now}
     cr.update(1001, attributes)
     expect(cr.find_by_id(9999)).to eq(nil)
