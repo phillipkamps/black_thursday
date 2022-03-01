@@ -37,12 +37,6 @@ class MerchantRepository
     if attributes.include?(:name)
       find_by_id(id).merchant_attributes[:name] = attributes[:name]
     end
-    if attributes.include?(:created_at)
-      find_by_id(id).merchant_attributes[:created_at] = attributes[:created_at]
-    end
-    if attributes.include?(:updated_at)
-      find_by_id(id).merchant_attributes[:updated_at] = attributes[:updated_at]
-    end
   end
 
   def delete(id)
