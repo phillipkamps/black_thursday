@@ -61,6 +61,13 @@ RSpec.describe InvoiceRepository do
     expect(invr.find_by_id(4986).invoice_attributes[:updated_at]).to_not eq(time)
   end
 
+  it 'doesnt update invalid attributes' do
+    time = Time.now
+    attributes = {:id => 100000, :created_at => time}
+    invr.update(4986, attributes)
+    expect(invr.find_by_id(4986).invoice_attributes[:created_at]).to_not eq(time)
+  end
+
   it 'deletes invoices' do
     to_delete = invr.find_by_id(4986)
     expect(invr.delete(4986)).to eq(to_delete)
