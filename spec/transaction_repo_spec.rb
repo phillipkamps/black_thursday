@@ -22,4 +22,8 @@ RSpec.describe TransactionRepository do
     expect(tr).to be_an_instance_of(TransactionRepository)
   end
 
+  it "returns an array of all merchant instances" do
+    expect(tr.all.count).to eq 4985
+  end
+
 end

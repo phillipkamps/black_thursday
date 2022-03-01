@@ -7,4 +7,8 @@ class TransactionRepository
     @transactions_instances_array = transactions_instances_array
   end
 
+  def all
+    transactions_instances_array
+  end
+
 end
