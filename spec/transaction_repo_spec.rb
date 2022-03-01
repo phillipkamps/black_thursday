@@ -51,4 +51,11 @@ RSpec.describe TransactionRepository do
     expected_transaction = tr.find_by_id(4986)
     expect(expected_transaction.transaction_attributes[:invoice_id]).to eq(9999)
   end
+
+  it "updates a transaction" do
+    tr.create({invoice_id: 9999})
+    tr.update(4986, {credit_card_number: 4000999999999999})
+    expected_transaction = tr.find_by_id(4986)
+    expect(expected_transaction.transaction_attributes[:credit_card_number]).to eq(4000999999999999)
+  end
 end

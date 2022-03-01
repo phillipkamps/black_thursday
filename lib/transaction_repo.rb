@@ -40,12 +40,14 @@ class TransactionRepository
   end
 
   def update(id, attributes)
-    # update Transaction instance having given id w/attrib provided;
-    # ONLY update: CC-number, exp-date, result;
-    # changes updated_at to be Time.now
+    if !(attributes.include?(:id) || attributes.include?(:invoice_id) || attributes.include?(:created_at))
+      find_by_id(id).transaction_attributes[:credit_card_number] = attributes[:credit_card_number]
+      find_by_id(id).transaction_attributes[:credit_card_expiration_date] = attributes[:credit_card_expiration_date]
+      find_by_id(id).transaction_attributes[:result] = attributes[:result]
+    end
   end
 
   def delete(id)
-    # Transaction instance with given id
+    transactions_instances_array.delete(find_by_id(id))
   end
 end
