@@ -64,17 +64,17 @@ RSpec.describe CustomerRepository do
     expect(cr.find_by_id(1001).customer_attributes[:updated_at]).to_not eq(time)
   end
 
-  xit "cannot update id or created_at" do # may need to finish this for future refactor
+  it "cannot update id or created_at" do
     cr.create({first_name: "Cott",
                last_name: "Ullivan",
                created_at: Time.now,
                updated_at: Time.now})
 
     time = cr.find_by_id(1001).customer_attributes[:updated_at]
-    attributes = {first_name: "Scott"}
+    attributes = {id: 9999, created_at: Time.now}
     cr.update(1001, attributes)
-    expect(cr.find_by_id(1001).customer_attributes[:first_name]).to eq("Scott")
-    expect(cr.find_by_id(1001).customer_attributes[:updated_at]).to_not eq(time)
+    expect(cr.find_by_id(9999)).to eq(nil)
+    expect(cr.find_by_id(1001).merchant_attributes[:created_at]).to_not eq(merchant_attributes[:created_at])
   end
 
   it "deletes customer" do

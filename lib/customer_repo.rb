@@ -34,10 +34,10 @@ class CustomerRepository
   end
 
   def update(id, attributes)
-    attributes.each do |attribute|
-      find_by_id(id).customer_attributes[attribute[0]] = attribute[1]
+    if !(attributes.include?(:id) || attributes.include?(:created_at))
+      find_by_id(id).merchant_attributes[:first_name] = attributes[:first_name]
+      find_by_id(id).merchant_attributes[:last_name] = attributes[:last_name]
     end
-    find_by_id(id).customer_attributes[:updated_at] = Time.now
   end
 
   def delete(id)
