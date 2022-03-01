@@ -26,4 +26,13 @@ RSpec.describe TransactionRepository do
     expect(tr.all.count).to eq 4985
   end
 
+  it "finds a transaction by id" do
+    expected_transaction = tr.find_by_id(730)
+    expect(expected_transaction.transaction_attributes[:invoice_id]).to eq(3613)
+  end
+
+  it "finds all transactions by invoice id" do
+    expected_transaction = tr.find_all_by_invoice_id(2850)
+    expect(expected_transaction.length).to eq(3)
+  end
 end

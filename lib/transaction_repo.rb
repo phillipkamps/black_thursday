@@ -1,6 +1,5 @@
 require "pry"
 class TransactionRepository
-
   attr_reader :transactions_instances_array
 
   def initialize(transactions_instances_array)
@@ -11,12 +10,16 @@ class TransactionRepository
     transactions_instances_array
   end
 
-  def find_by_id
-    # nil OR instance of Transaction with matching ID
+  def find_by_id(id)
+    transactions_instances_array.find do |transaction_instance|
+      transaction_instance.transaction_attributes[:id] == id
+    end
   end
 
-  def find_all_by_invoice_id
-    # [] OR >= 1 matches
+  def find_all_by_invoice_id(invoice_id)
+    transactions_instances_array.find_all do |transaction_instance|
+      transaction_instance.transaction_attributes[:invoice_id] == invoice_id
+    end
   end
 
   def find_all_by_credit_card_number
@@ -40,5 +43,4 @@ class TransactionRepository
   def delete(id)
     # Transaction instance with given id
   end
-
 end
