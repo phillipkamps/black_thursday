@@ -58,4 +58,10 @@ RSpec.describe TransactionRepository do
     expected_transaction = tr.find_by_id(4986)
     expect(expected_transaction.transaction_attributes[:credit_card_number]).to eq(4000999999999999)
   end
+
+  it "deletes a transaction" do
+    tr.create({invoice_id: 9999})
+    tr.delete(4986)
+    expect(tr.find_by_id(4986)).to eq nil
+  end
 end
