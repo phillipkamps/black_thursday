@@ -44,7 +44,9 @@ class InvoiceRepository
 
   def update(id, attributes)
     attributes.each do |attribute|
-      find_by_id(id).invoice_attributes[attribute[0]] = attribute[1]
+      if !(attributes.include?(:id) || attributes.include?(:created_at))
+        find_by_id(id).invoice_attributes[attribute[0]] = attribute[1]
+      end
     end
     find_by_id(id).invoice_attributes[:updated_at] = Time.now
   end
