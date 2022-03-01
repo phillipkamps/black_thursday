@@ -1,7 +1,7 @@
 require "csv"
 require "merchant"
 require "item"
-reqiure "transaction"
+require "transaction"
 require "pry"
 
 class SalesEngine
@@ -72,6 +72,7 @@ class SalesEngine
   end
 
   def transactions_instanciator
+    transactions_instances_array = []
     transactions.by_row!.each do |row|
       transactions_instances_array << Transaction.new(row)
     end
