@@ -35,4 +35,14 @@ RSpec.describe TransactionRepository do
     expected_transaction = tr.find_all_by_invoice_id(2850)
     expect(expected_transaction.length).to eq(3)
   end
+
+  it "finds all transactions by cc #" do
+    expected_transaction = tr.find_all_by_credit_card_number(4518913442963142)
+    expect(expected_transaction.length).to eq(1)
+  end
+
+  it "finds all transactions by result" do
+    expected_transaction = tr.find_all_by_result("success")
+    expect(expected_transaction.length).to eq(4158)
+  end
 end

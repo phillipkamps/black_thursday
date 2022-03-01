@@ -22,12 +22,16 @@ class TransactionRepository
     end
   end
 
-  def find_all_by_credit_card_number
-    # [] OR >= 1 matches
+  def find_all_by_credit_card_number(number)
+    transactions_instances_array.find_all do |transaction_instance|
+      transaction_instance.transaction_attributes[:credit_card_number] == number
+    end
   end
 
-  def find_all_by_result
-    # [] OR >=1 matches
+  def find_all_by_result(result)
+    transactions_instances_array.find_all do |transaction_instance|
+      transaction_instance.transaction_attributes[:result] == result
+    end
   end
 
   def create(attributes)
