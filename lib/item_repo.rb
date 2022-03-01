@@ -53,7 +53,7 @@ class ItemRepository
 
   def create(attributes)
     attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
-    keys = [:name, :id, :describe, :unit_price, :merchant_id]
+    keys = [:name, :id, :description, :unit_price, :merchant_id]
     keys.each do |key|
       if !attributes[key]
         attributes[key] = ""
