@@ -39,4 +39,8 @@ class CustomerRepository
     end
     find_by_id(id).customer_attributes[:updated_at] = Time.now
   end
+
+  def delete(id)
+    customers_instances_array.delete(find_by_id(id))
+  end
 end
