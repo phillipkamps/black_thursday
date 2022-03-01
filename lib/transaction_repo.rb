@@ -35,7 +35,8 @@ class TransactionRepository
   end
 
   def create(attributes)
-    # new Transaction instance w/attrib provided; curr HIGHEST TrID += 1
+    attributes[:id] = transactions_instances_array[-1].transaction_attributes[:id] + 1
+    transactions_instances_array << Transaction.new(attributes)
   end
 
   def update(id, attributes)

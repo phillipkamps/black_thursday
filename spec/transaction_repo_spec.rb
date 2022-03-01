@@ -45,4 +45,10 @@ RSpec.describe TransactionRepository do
     expected_transaction = tr.find_all_by_result("success")
     expect(expected_transaction.length).to eq(4158)
   end
+
+  it "creates a new transaction instance" do
+    tr.create({invoice_id: 9999})
+    expected_transaction = tr.find_by_id(4986)
+    expect(expected_transaction.transaction_attributes[:invoice_id]).to eq(9999)
+  end
 end
