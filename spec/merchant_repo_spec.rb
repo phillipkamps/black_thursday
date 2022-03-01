@@ -1,6 +1,6 @@
-require "./lib/merchant_repo"
 require "./lib/sales_engine"
 require "./lib/merchant"
+require "./lib/merchant_repo"
 require "pry"
 
 RSpec.describe MerchantRepository do
@@ -8,7 +8,8 @@ RSpec.describe MerchantRepository do
     SalesEngine.from_csv({
       items: "./data/items.csv",
       merchants: "./data/merchants.csv",
-      invoices: "./data/invoices.csv"
+      invoices: "./data/invoices.csv",
+      customers: "./data/customers.csv"
     })
   end
 
