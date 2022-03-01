@@ -49,11 +49,14 @@ class ItemRepository
 
   def create(attributes)
     attributes[:id] = items_instances_array[-1].item_attributes[:id] + 1
-    attributes[:description] = ""
-    attributes[:unit_price] = ""
-    attributes[:created_at] = ""
-    attributes[:updated_at] = ""
-    attributes[:merchant_id] = ""
+    keys = [:name, :id, :description, :unit_price, :merchant_id]
+    keys.each do |key|
+      if !attributes[key]
+        attributes[key] = ""
+      end
+    end
+    attributes[:created_at] = Time.now
+    attributes[:updated_at] = Time.now
     items_instances_array << Item.new(attributes)
   end
 
@@ -67,6 +70,8 @@ class ItemRepository
     if attributes.include?(:unit_price)
       find_by_id(id).item_attributes[:unit_price] = attributes[:unit_price]
     end
+
+    find_by_id(id).item_attributes[:updated_at] = Time.now
   end
 
   def delete(id)

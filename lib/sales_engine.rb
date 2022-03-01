@@ -2,6 +2,7 @@ require "csv"
 require "merchant"
 require "item"
 require "invoice"
+require "transaction"
 require "sales_analyst"
 require "pry"
 
@@ -10,12 +11,13 @@ class SalesEngine
   def initialize(data)
     @items_data = data[:items]
     @merchants_data = data[:merchants]
-    @customers_data = data[:customers]
     @invoices_data = data[:invoices]
-    @customers_instances_array = []
+    @customers_data = data[:customers]
+    @transactions_data = data[:transactions]
     @merchants_instances_array = []
     @items_instances_array = []
     @invoices_instances_array = []
+    @customers_instances_array = []
   end
 
   def self.from_csv(argument)
@@ -23,11 +25,8 @@ class SalesEngine
     merchants = CSV.read(argument[:merchants], headers: true, header_converters: :symbol)
     invoices = CSV.read(argument[:invoices], headers: true, header_converters: :symbol)
     customers = CSV.read(argument[:customers], headers: true, header_converters: :symbol)
-    SalesEngine.new({items: items, merchants: merchants, invoices: invoices, customers: customers})
-  end
-
-  def analyst
-    SalesAnalyst.new(items_instanciator, merchants_instanciator, invoices_instanciator, customers_instanciator)
+    transactions = CSV.read(argument[:transactions], headers: true, header_converters: :symbol)
+    SalesEngine.new({items: items, merchants: merchants, invoices: invoices, customers: customers, transactions: transactions})
   end
 
   def items
@@ -44,6 +43,10 @@ class SalesEngine
 
   def invoices
     @invoices_data
+  end
+
+  def transactions
+    @transactions_data
   end
 
   def items_instanciator
@@ -73,5 +76,13 @@ class SalesEngine
       invoices_instances_array << Invoice.new(row)
     end
     invoices_instances_array
+  end
+
+  def transactions_instanciator
+    transactions_instances_array = []
+    transactions.by_row!.each do |row|
+      transactions_instances_array << Transaction.new(row)
+    end
+    transactions_instances_array
   end
 end
