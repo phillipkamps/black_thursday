@@ -10,6 +10,6 @@ class Item
   end
 
   def unit_price_to_dollars
-    item_attributes[:unit_price].to_f
+    item_attributes[:unit_price].to_f / 100
   end
 end
