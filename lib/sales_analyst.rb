@@ -220,13 +220,13 @@ class SalesAnalyst
 
   def total_revenue_by_date(date)
     revenue_by_date = []
-    # if @invoiceitems.created_at == date
-    invoiceitems.each do |invoice|
-      invoiceitemrepository.find_all_by_invoice_id(invoiceitems.invoice_attribute[:id]).each do |invoice_item|
-        if invoice_item.invoice_item_attributes[:created_at] == date
-          revenue_by_date << invoice_item.invoice_item_attributes[:quantity] * invoice_item.invoice_item_attributes[:unit_price]
+    invoiceitems.each do |ii|
+      if ii.created_at == date
+        invoiceitemrepository.find_all_by_invoice_id(invoiceitems.invoice_attribute[:id]).each do |invoice_item|
+          if invoice_item.invoice_item_attributes[:created_at] == date
+            revenue_by_date << invoice_item.invoice_item_attributes[:quantity] * invoice_item.invoice_item_attributes[:unit_price]
+          end
         end
-
       end
     end
     revenue_by_date.sum / 100
