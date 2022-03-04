@@ -41,4 +41,23 @@ RSpec.describe ItemRepository do
     expect(expected_item.item_attributes[:name]).to eq "Etre ailleurs"
     expect(expected_item.item_attributes[:id]).to eq 263397059
   end
+
+  it "creates a new item" do
+    ir.create({name: "Widget"})
+    expected_item = ir.find_by_id(263567475)
+    expect(expected_item.item_attributes[:name]).to eq("Widget")
+  end
+
+  it "updates an invoice item" do
+    ir.create({name: "Widget"})
+    ir.update(263567475, {quantity: 111})
+    expected_item = ir.find_by_id(263567475)
+    expect(expected_item.item_attributes[:quantity]).to eq(111)
+  end
+
+  it "deletes an invoice item" do
+    ir.create({name: "Widget"})
+    ir.delete(263567475)
+    expect(ir.find_by_id(263567475)).to eq nil
+  end
 end
