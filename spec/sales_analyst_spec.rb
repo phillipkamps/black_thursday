@@ -124,25 +124,25 @@ RSpec.describe SalesAnalyst do
     expect(expected_invoice.class).to eq Float
   end
 
-  it "#total_revenue_by_date returns total revenue for given date" do
-    date = Time.parse("2009-02-07")
-    expected = sa.total_revenue_by_date(date)
-
-    expect(expected).to eq 21067.77
-    expect(expected.class).to eq Float
-  end
-
-  xit "#top_revenue_earners(n) returns the top n merchants ranked by revenue" do
-    expected = sa.top_revenue_earners(5)
-    first = expected.first
-    last = expected.last
-
-    expect(expected.length).to eq 5
-
-    expect(first.class).to eq Merchant
-    expect(first.id).to eq 12334634
-
-    expect(last.class).to eq Merchant
-    expect(last.id).to eq 12335747
-  end
+  # xit "#total_revenue_by_date returns total revenue for given date" do
+  #   date = Time.parse("2009-02-07")
+  #   expected = sa.total_revenue_by_date(date)
+  #
+  #   expect(expected).to eq 21067.77
+  #   expect(expected.class).to eq Float
+  # end
+  #
+  # xit "#top_revenue_earners(n) returns the top n merchants ranked by revenue" do
+  #   expected = sa.top_revenue_earners(5)
+  #   first = expected.first
+  #   last = expected.last
+  #
+  #   expect(expected.length).to eq 5
+  #
+  #   expect(first.class).to eq Merchant
+  #   expect(first.id).to eq 12334634
+  #
+  #   expect(last.class).to eq Merchant
+  #   expect(last.id).to eq 12335747
+  # end
 end

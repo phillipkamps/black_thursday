@@ -70,6 +70,7 @@ class ItemRepository
   def update(id, attributes)
     if !(attributes.include?(:id) || attributes.include?(:merchant_id) || attributes.include?(:created_at) || attributes.include?(:updated_at))
       find_by_id(id).item_attributes[:name] = attributes[:name]
+      find_by_id(id).item_attributes[:quantity] = attributes[:quantity]
       find_by_id(id).item_attributes[:description] = attributes[:description]
       find_by_id(id).item_attributes[:unit_price] = attributes[:unit_price]
     end

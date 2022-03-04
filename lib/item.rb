@@ -6,13 +6,10 @@ class Item
     @item_attributes = attributes
     @item_attributes[:id] = item_attributes[:id].to_i
     @item_attributes[:merchant_id] = item_attributes[:merchant_id].to_i
-    unit_price_array = item_attributes[:unit_price].split("")
-    unit_price_array.insert(-3, ".")
-    unit_price_array = unit_price_array.join("")
-    @item_attributes[:unit_price] = BigDecimal(unit_price_array.to_f, 4)
+    @item_attributes[:unit_price] = item_attributes[:unit_price].to_f
   end
 
   def unit_price_to_dollars
-    item_attributes[:unit_price].to_f
+    item_attributes[:unit_price].to_f / 100
   end
 end
